@@ -31,10 +31,11 @@
             // Maximum number of vouchers usable in Phase 2 (1 voucher per 1,000 spent in Phase 2)
             let max_vouchers_usable_phase2 = Math.floor(phase2_spent / 1000);
             let total_vouchers_available = Math.floor(vouchers_phase1 / 300) + Math.floor(vouchers_phase2 / 300);
-            let total_vouchers_used = Math.min(max_vouchers_usable_phase2, total_vouchers_available) * 300;
+            let total_vouchers_used = Math.min(max_vouchers_usable_phase2, total_vouchers_available);
+            let vouchers_not_used = total_vouchers_available - total_vouchers_used;
 
             // Final discounted price in Phase 2
-            let total_discount_phase2 = discount_phase2 + total_vouchers_used;
+            let total_discount_phase2 = discount_phase2 + (total_vouchers_used * 300);
 
             // Total savings from both phases
             let total_savings = discount_phase1 + total_discount_phase2;
@@ -49,6 +50,7 @@
                 'Phase 1 discount': discount_phase1,
                 'Phase 2 discount': total_discount_phase2,
                 'Vouchers used in Phase 2': total_vouchers_used,
+                'Vouchers not used': vouchers_not_used,
                 'Total savings': total_savings,
                 'Final total spending': total_spent_phase1 + total_spent_phase2
             };
@@ -58,7 +60,7 @@
             let best_final_spending = Infinity;
             let best_savings = 0;
             let best_split = [0, 0];
-            let phase1_after_discount, phase2_after_discount;
+            let phase1_after_discount, phase2_after_discount, unused_vouchers;
 
             // Iterate over possible amounts to spend in phase 1 (from 0 to original price)
             for (let phase1_spent = 0; phase1_spent <= original_price; phase1_spent += 1000) {
@@ -74,6 +76,7 @@
                     best_split = [phase1_spent, phase2_spent];
                     phase1_after_discount = savings['Total spent phase 1'];
                     phase2_after_discount = savings['Total spent phase 2'];
+                    unused_vouchers = savings['Vouchers not used'];
                 }
             }
 
@@ -83,7 +86,8 @@
                 'Maximized savings': best_savings,
                 'Minimum final total spending': best_final_spending,
                 'Best Phase 1 spending after discount': phase1_after_discount,
-                'Best Phase 2 spending after discount': phase2_after_discount
+                'Best Phase 2 spending after discount': phase2_after_discount,
+                'Unused vouchers': unused_vouchers
             };
         }
 
@@ -97,11 +101,12 @@
             const result = maximizeSavingsMinFinalSpending(originalPrice);
             let resultHtml = '<div class="mt-4 space-y-2">';
             resultHtml += `<p><strong>第一階段最佳消費額：</strong>${result['Best Phase 1 spending']} 元</p>`;
-            resultHtml += `<p><strong>第二階段最佳消費額：</strong>${result['Best Phase 2 spending']} 元</p>`;
-            resultHtml += `<p><strong>最大化節省：</strong>${result['Maximized savings']} 元</p>`;
-            resultHtml += `<p><strong>最終消費總額：</strong>${result['Minimum final total spending']} 元</p>`;
             resultHtml += `<p><strong>第一階段折扣後消費額：</strong>${result['Best Phase 1 spending after discount']} 元</p>`;
+            resultHtml += `<p><strong>第二階段最佳消費額：</strong>${result['Best Phase 2 spending']} 元</p>`;
             resultHtml += `<p><strong>第二階段折扣後消費額：</strong>${result['Best Phase 2 spending after discount']} 元</p>`;
+            resultHtml += `<p><strong>最終消費總額：</strong>${result['Minimum final total spending']} 元</p>`;
+            resultHtml += `<p><strong>總共節省：</strong>${result['Maximized savings']} 元</p>`;
+            resultHtml += `<p><strong>未使用的300元電子折價券：</strong>${result['Unused vouchers']} 張</p>`;
             resultHtml += '</div>';
             document.getElementById('result').innerHTML = resultHtml;
         }
