@@ -1,5 +1,3 @@
-Here’s a refined version of your README with improved formatting and added usage instructions in the English section:
-
 * * *
 
 Lalaport Taichiung Anniversary Discount Maximization App
