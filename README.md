@@ -15,7 +15,7 @@ Feel free to try the app here: \[[https://hsiangenlinlin.github.io/lalaport\-ann
 Promotion Details
 -----------------
 
-### **Phase 1 Promotion (10/17/2024-10/28/2024):**
+### **Phase 1 Promotion (10/17/2024-10/27/2024):**
 
 *   **Coupons:** For every 10,000 TWD spent, you receive a 300 TWD coupon that can only be used in the second phase of promotions. The usage condition is that for every 1,000 TWD spent, one coupon can be used.
 *   **Cash Discount:** For every 10,000 TWD spent, you immediately enjoy a 1,000 TWD cash discount.
@@ -51,7 +51,7 @@ How to Use
 促銷詳情
 ----
 
-### **第一波促銷 (2024/10/17 - 2024/10/28)：**
+### **第一波促銷 (2024/10/17 - 2024/10/27)：**
 
 *   **折價券**：每消費10,000元，可獲得一張300元的折價券，這些折價券只能在第二波促銷中使用。使用條件為每消費1,000元可使用一張折價券。
 *   **現金折扣**：每消費10,000元，即可立享1,000元現金折扣。
