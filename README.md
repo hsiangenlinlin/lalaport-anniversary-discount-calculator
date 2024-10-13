@@ -8,7 +8,7 @@ Objective
 
 This app aims to optimize spending strategies to maximize discounts during the Lalaport Anniversary promotion. By analyzing expense allocations across both promotional phases, users can effectively leverage cash discounts and coupon usage to enhance their savings.
 
-Feel free to try the app \[here](https://hsiangenlinlin.github.io/lalaport-anniversary-discount-calculator/)\
+Feel free to try the app [\[here](https://hsiangenlinlin.github.io/lalaport-anniversary-discount-calculator/)\]
 
 * * *
 
