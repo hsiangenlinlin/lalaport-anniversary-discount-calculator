@@ -1,11 +1,11 @@
 * * *
 ### Objective:
-
+--
 This app aims to optimize spending strategies for maximizing discounts during the Lalaport Anniversary promotion. By analyzing expense allocations across both promotional phases, users can effectively leverage cash discounts and coupon usage to enhance their savings. 
 Feel free to try it here: [https://hsiangenlinlin.github.io/lalaport-anniversary-discount-calculator/]
 
 ### Promotion Details:
-
+----
 1.  **Phase 1 Promotion (10/17/2024-10/28/2024):**
     
     *   **Coupons:** For every 10,000 TWD spent, you receive a 300 TWD coupon that can only be used in the second phase of promotions. The usage condition is that for every 1,000 TWD spent, one coupon can be used.
@@ -48,7 +48,7 @@ Feel free to try it here: [https://hsiangenlinlin.github.io/lalaport-anniversary
 ----
 
 1.  在應用程式中輸入您的原始消費金額。
-2.  點擊「計算」按鈕。
+2.  點擊「計算折扣」按鈕。
 3.  系統將會顯示最佳的消費分配方案，最大化現金折扣和折價券的使用。
 
 
