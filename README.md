@@ -5,7 +5,7 @@ This app aims to optimize spending strategies for maximizing discounts during th
 Feel free to try it here: [https://hsiangenlinlin.github.io/lalaport-anniversary-discount-calculator/]
 
 ### Promotion Details:
-----
+---
 1.  **Phase 1 Promotion (10/17/2024-10/28/2024):**
     
     *   **Coupons:** For every 10,000 TWD spent, you receive a 300 TWD coupon that can only be used in the second phase of promotions. The usage condition is that for every 1,000 TWD spent, one coupon can be used.
