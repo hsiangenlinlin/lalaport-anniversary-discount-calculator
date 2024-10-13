@@ -63,7 +63,7 @@
             let phase1_after_discount, phase2_after_discount, unused_vouchers;
 
             // Iterate over possible amounts to spend in phase 1 (from 0 to original price)
-            for (let phase1_spent = 0; phase1_spent <= original_price; phase1_spent += 1000) {
+            for (let phase1_spent = 0; phase1_spent <= original_price; phase1_spent += 1) {
                 let phase2_spent = original_price - phase1_spent;
                 let savings = calculateSavingsFromOriginalPrice(phase1_spent, phase2_spent);
 
