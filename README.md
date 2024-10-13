@@ -22,13 +22,14 @@ Feel free to try it here: [https://hsiangenlinlin.github.io/lalaport-anniversary
 
 * * *
 
-Lalaport周年慶促銷折扣最大化應用程式
+台中Lalaport周年慶促銷折扣最大化應用程式
 ======================
 
 目標
 --
 
 本應用程式旨在幫助用戶在Lalaport周年慶促銷活動中，通過優化消費策略來最大化折扣。通過分析在兩波促銷活動中的最佳消費分配，用戶可以有效利用現金折扣和折價券，實現更多的節省。
+點擊連結即可使用: [https://hsiangenlinlin.github.io/lalaport-anniversary-discount-calculator/]
 
 促銷詳情
 ----
