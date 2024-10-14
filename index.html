@@ -70,7 +70,7 @@
                 let final_spending = savings['Final total spending'];
 
                 // If the final spending is less than the current best spending, update best results
-                if (final_spending < best_final_spending) {
+                if (final_spending <= best_final_spending) {
                     best_final_spending = final_spending;
                     best_savings = savings['Total savings'];
                     best_split = [phase1_spent, phase2_spent];
