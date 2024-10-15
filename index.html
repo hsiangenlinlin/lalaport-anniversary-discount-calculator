@@ -121,9 +121,11 @@
             const result = maximizeSavingsMinFinalSpending(originalPrice);
             let resultHtml = '<div class="mt-4 space-y-2">';
             resultHtml += `<p><strong>第一波最佳消費額：</strong>${result['Best Phase 1 spending']} 元</p>`;
-            resultHtml += `<p><strong>第一波折扣後消費額：</strong>${result['Best Phase 1 spending']} - 500x${result['discount_num_phase1']} = ${result['Best Phase 1 spending after discount']} 元</p>`;
+            resultHtml += `<p><strong>第一波折扣後消費額：</strong>${result['Best Phase 1 spending after discount']} 元</p>`;
+            resultHtml += `<p>= ${result['Best Phase 1 spending']}-500x${result['discount_num_phase1']}</p>`;
             resultHtml += `<p><strong>第二波最佳消費額：</strong>${result['Best Phase 2 spending']} 元</p>`;
-            resultHtml += `<p><strong>第二波折扣後消費額：</strong>${result['Best Phase 2 spending']} - 300x${result['vouchers_num_phase1']}(第一波) - 300x${result['discount_num_phase2']} - 300x${result['vouchers_num_phase2']} = ${result['Best Phase 2 spending after discount']}元</p>`;
+            resultHtml += `<p><strong>第二波折扣後消費額：</strong>${result['Best Phase 2 spending after discount']}元</p>`;
+            resultHtml += `<p>= ${result['Best Phase 2 spending']}-300x${result['vouchers_num_phase1']}(第一波)-300x${result['discount_num_phase2']}-300x${result['vouchers_num_phase2']}</p>`;
             resultHtml += `<p><strong>最終消費總額：</strong>${result['Minimum final total spending']} 元</p>`;
             resultHtml += `<p><strong>總共節省：</strong>${result['Maximized savings']} 元</p>`;
             resultHtml += `<p><strong>未使用的300元電子折價券：</strong>${result['Unused vouchers']} 張</p>`;
