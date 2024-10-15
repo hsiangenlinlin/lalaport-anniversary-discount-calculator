@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lalaport週年慶折扣計算機</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
 </head>
+
 <body class="bg-gray-100 p-8">
     <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
         <div class="p-8">
             <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold mb-4">Lalaport週年慶折扣計算機</div>
-            <input type="number" id="originalPrice" placeholder="輸入原始價格" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
-            <button onclick="calculateDiscount()" class="mt-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <input type="number" id="originalPrice" placeholder="輸入原始價格"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+            <button onclick="calculateDiscount()"
+                class="mt-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 計算折扣
             </button>
             <div id="result" class="mt-4"></div>
@@ -24,10 +28,14 @@
             let discount_phase1 = Math.floor(phase1_spent / 10000) * 1000;
             let vouchers_phase1 = Math.floor(phase1_spent / 10000) * 300;
 
+            let discount_num_phase1 = Math.floor(phase1_spent / 10000) * 2; // each discount is 500
+            let vouchers_num_phase1 = Math.floor(phase1_spent / 10000); // each voucher is 300
             // Phase 2: Calculate discount and vouchers
             let discount_phase2 = Math.floor(phase2_spent / 10000) * 600;
             let vouchers_phase2 = Math.floor(phase2_spent / 10000) * 300;
 
+            let discount_num_phase2 = Math.floor(phase2_spent / 10000) * 2; // each discount is 300
+            let vouchers_num_phase2 = Math.floor(phase2_spent / 10000); // each voucher is 300
             // Maximum number of vouchers usable in Phase 2 (1 voucher per 1,000 spent in Phase 2)
             let max_vouchers_usable_phase2 = Math.floor(phase2_spent / 1000);
             let total_vouchers_available = Math.floor(vouchers_phase1 / 300) + Math.floor(vouchers_phase2 / 300);
@@ -52,7 +60,11 @@
                 'Vouchers used in Phase 2': total_vouchers_used,
                 'Vouchers not used': vouchers_not_used,
                 'Total savings': total_savings,
-                'Final total spending': total_spent_phase1 + total_spent_phase2
+                'Final total spending': total_spent_phase1 + total_spent_phase2,
+                'discount_num_phase1': discount_num_phase1,
+                'vouchers_num_phase1': vouchers_num_phase1,
+                'discount_num_phase2': discount_num_phase2,
+                'vouchers_num_phase2': vouchers_num_phase2,
             };
         }
 
@@ -77,6 +89,10 @@
                     phase1_after_discount = savings['Total spent phase 1'];
                     phase2_after_discount = savings['Total spent phase 2'];
                     unused_vouchers = savings['Vouchers not used'];
+                    discount_num_phase1 = savings['discount_num_phase1'];
+                    vouchers_num_phase1 = savings['vouchers_num_phase1'];
+                    discount_num_phase2 = savings['discount_num_phase2'];
+                    vouchers_num_phase2 = savings['vouchers_num_phase2'];
                 }
             }
 
@@ -87,7 +103,11 @@
                 'Minimum final total spending': best_final_spending,
                 'Best Phase 1 spending after discount': phase1_after_discount,
                 'Best Phase 2 spending after discount': phase2_after_discount,
-                'Unused vouchers': unused_vouchers
+                'Unused vouchers': unused_vouchers,
+                'discount_num_phase1': discount_num_phase1,
+                'vouchers_num_phase1': vouchers_num_phase1,
+                'discount_num_phase2': discount_num_phase2,
+                'vouchers_num_phase2': vouchers_num_phase2,
             };
         }
 
@@ -100,16 +120,18 @@
 
             const result = maximizeSavingsMinFinalSpending(originalPrice);
             let resultHtml = '<div class="mt-4 space-y-2">';
-            resultHtml += `<p><strong>第一階段最佳消費額：</strong>${result['Best Phase 1 spending']} 元</p>`;
-            resultHtml += `<p><strong>第一階段折扣後消費額：</strong>${result['Best Phase 1 spending after discount']} 元</p>`;
-            resultHtml += `<p><strong>第二階段最佳消費額：</strong>${result['Best Phase 2 spending']} 元</p>`;
-            resultHtml += `<p><strong>第二階段折扣後消費額：</strong>${result['Best Phase 2 spending after discount']} 元</p>`;
+            resultHtml += `<p><strong>第一波最佳消費額：</strong>${result['Best Phase 1 spending']} 元</p>`;
+            resultHtml += `<p><strong>第一波折扣後消費額：</strong>${result['Best Phase 1 spending']} - 500x${result['discount_num_phase1']} = ${result['Best Phase 1 spending after discount']} 元</p>`;
+            resultHtml += `<p><strong>第二波最佳消費額：</strong>${result['Best Phase 2 spending']} 元</p>`;
+            resultHtml += `<p><strong>第二波折扣後消費額：</strong>${result['Best Phase 2 spending']} - 300x${result['vouchers_num_phase1']}(第一波) - 300x${result['discount_num_phase2']} - 300x${result['vouchers_num_phase2']} = ${result['Best Phase 2 spending after discount']}元</p>`;
             resultHtml += `<p><strong>最終消費總額：</strong>${result['Minimum final total spending']} 元</p>`;
             resultHtml += `<p><strong>總共節省：</strong>${result['Maximized savings']} 元</p>`;
             resultHtml += `<p><strong>未使用的300元電子折價券：</strong>${result['Unused vouchers']} 張</p>`;
+            resultHtml += `<p><strong>美食街100元電子折價券：</strong>${result['vouchers_num_phase2']} 張</p>`;
             resultHtml += '</div>';
             document.getElementById('result').innerHTML = resultHtml;
         }
     </script>
 </body>
+
 </html>
